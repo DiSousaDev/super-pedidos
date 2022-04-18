@@ -1,13 +1,19 @@
 package br.dev.diego.superpedidos.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_categoria")
 public class Categoria extends AbstractEntity<Integer>{
 
     private String nome;
+
+    @ManyToMany(mappedBy = "categorias")
+    private List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {
     }
@@ -26,4 +32,7 @@ public class Categoria extends AbstractEntity<Integer>{
         this.nome = nome;
     }
 
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
 }
