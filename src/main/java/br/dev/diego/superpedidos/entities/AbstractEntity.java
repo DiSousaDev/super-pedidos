@@ -1,12 +1,23 @@
 package br.dev.diego.superpedidos.entities;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.StringJoiner;
 
+@MappedSuperclass
 public abstract class AbstractEntity<T extends Serializable> implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private T id;
+
+    protected AbstractEntity() {
+
+    }
 
     protected AbstractEntity(T id) {
         this.id = id;
