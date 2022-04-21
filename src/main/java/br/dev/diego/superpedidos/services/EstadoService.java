@@ -18,6 +18,6 @@ public class EstadoService {
 
     @Transactional(readOnly = true)
     public List<EstadoDto> listar() {
-        return repository.findAll().stream().map(estado -> new EstadoDto(estado)).collect(Collectors.toList());
+        return repository.listarComCidade().stream().map(EstadoDto::new).collect(Collectors.toList());
     }
 }

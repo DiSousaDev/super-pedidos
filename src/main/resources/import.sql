@@ -16,3 +16,11 @@ INSERT INTO tb_estado (nome) VALUES ('São Paulo');
 INSERT INTO tb_cidade (nome, estado_id) VALUES ('Uberlândia', 1);
 INSERT INTO tb_cidade (nome, estado_id) VALUES ('São Paulo', 2);
 INSERT INTO tb_cidade (nome, estado_id) VALUES ('Campinas', 2);
+
+INSERT INTO tb_cliente (nome, email, cpf_ou_cnpj, tipo) values ('Maria Silva', 'maria@gmail.com', '36378912377', '1');
+
+INSERT INTO tb_telefone (cliente_id, telefones) values (1, '27363323');
+INSERT INTO tb_telefone (cliente_id, telefones) values (1, '93838393');
+
+INSERT INTO tb_endereco (logradouro, numero, complemento, bairro, cep, cliente_id, cidade_id) values ('Rua Flores', '300', 'Apto 303', 'Jardim', '38220834', 1, 1);
+INSERT INTO tb_endereco (logradouro, numero, complemento, bairro, cep, cliente_id, cidade_id) values ('Avenida Matos', '105', 'Sala 800', 'Centro', '38777012', 1, 2);
