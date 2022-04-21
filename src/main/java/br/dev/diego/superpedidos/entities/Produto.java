@@ -1,7 +1,5 @@
 package br.dev.diego.superpedidos.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -17,7 +15,6 @@ public class Produto extends AbstractEntity<Integer>{
     private String nome;
     private Double preco;
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "tb_produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),

@@ -9,3 +9,10 @@ INSERT INTO tb_produto_categoria (produto_id, categoria_id) VALUES ( 1, 1);
 INSERT INTO tb_produto_categoria (produto_id, categoria_id) VALUES ( 2, 1);
 INSERT INTO tb_produto_categoria (produto_id, categoria_id) VALUES ( 3, 1);
 INSERT INTO tb_produto_categoria (produto_id, categoria_id) VALUES ( 2, 2);
+
+INSERT INTO tb_estado (nome) VALUES ('Minas Gerais');
+INSERT INTO tb_estado (nome) VALUES ('São Paulo');
+
+INSERT INTO tb_cidade (nome, estado_id) VALUES ('Uberlândia', 1);
+INSERT INTO tb_cidade (nome, estado_id) VALUES ('São Paulo', 2);
+INSERT INTO tb_cidade (nome, estado_id) VALUES ('Campinas', 2);

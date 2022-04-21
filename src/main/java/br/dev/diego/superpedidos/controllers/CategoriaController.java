@@ -1,6 +1,6 @@
 package br.dev.diego.superpedidos.controllers;
 
-import br.dev.diego.superpedidos.entities.Categoria;
+import br.dev.diego.superpedidos.entities.dto.CategoriaDtoWithProdutos;
 import br.dev.diego.superpedidos.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Categoria> find(@PathVariable Integer id) {
+    public ResponseEntity<CategoriaDtoWithProdutos> find(@PathVariable Integer id) {
         return ResponseEntity.ok(categoriaService.buscar(id));
     }
 }

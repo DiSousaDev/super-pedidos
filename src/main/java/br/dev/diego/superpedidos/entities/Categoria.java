@@ -1,7 +1,5 @@
 package br.dev.diego.superpedidos.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -14,7 +12,6 @@ public class Categoria extends AbstractEntity<Integer>{
 
     private String nome;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();
 
