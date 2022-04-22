@@ -24,3 +24,13 @@ INSERT INTO tb_telefone (cliente_id, telefones) values (1, '93838393');
 
 INSERT INTO tb_endereco (logradouro, numero, complemento, bairro, cep, cliente_id, cidade_id) values ('Rua Flores', '300', 'Apto 303', 'Jardim', '38220834', 1, 1);
 INSERT INTO tb_endereco (logradouro, numero, complemento, bairro, cep, cliente_id, cidade_id) values ('Avenida Matos', '105', 'Sala 800', 'Centro', '38777012', 1, 2);
+
+INSERT INTO tb_pedido (instante, client_id, endereco_de_entrega_id) values ('2017-09-30T10:32:00Z', 1, 1);
+INSERT INTO tb_pedido (instante, client_id, endereco_de_entrega_id) values ('2017-10-10T19:35:00Z', 1, 2);
+
+INSERT INTO tb_pagamento (pedido_id, estado) values (1, 2);
+INSERT INTO tb_pagamento (pedido_id, estado) values (2, 1);
+
+INSERT INTO tb_pagamento_com_cartao (pedido_id, numero_de_parcelas) values (1, 6);
+INSERT INTO tb_pagamento_com_boleto (pedido_id, data_vencimento, data_pagamento) values (2,'2017-10-20T00:00:00Z', null);
+
