@@ -10,11 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tb_pagamento")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Pagamento  {
+public abstract class Pagamento implements Serializable {
 
     @Id
     private Integer id;
@@ -25,10 +26,10 @@ public abstract class Pagamento  {
     @MapsId
     private Pedido pedido;
 
-    public Pagamento() {
+    protected Pagamento() {
     }
 
-    public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
+    protected Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
         this.id = id;
         this.estado = estado.getCod();
         this.pedido = pedido;

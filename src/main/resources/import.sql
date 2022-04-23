@@ -34,3 +34,6 @@ INSERT INTO tb_pagamento (pedido_id, estado) values (2, 1);
 INSERT INTO tb_pagamento_com_cartao (pedido_id, numero_de_parcelas) values (1, 6);
 INSERT INTO tb_pagamento_com_boleto (pedido_id, data_vencimento, data_pagamento) values (2,'2017-10-20T00:00:00Z', null);
 
+INSERT INTO tb_item_pedido(desconto, preco, quantidade, produto_id, pedido_id) VALUES (0.0, 2000.0, 1, 1, 1);
+INSERT INTO tb_item_pedido(desconto, preco, quantidade, produto_id, pedido_id) VALUES (0.0, 80.0, 2, 3, 1);
+INSERT INTO tb_item_pedido(desconto, preco, quantidade, produto_id, pedido_id) VALUES (100.0, 800.0, 1, 2, 2);
