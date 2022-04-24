@@ -10,6 +10,8 @@ import br.dev.diego.superpedidos.services.exceptions.DataIntegrityException;
 import br.dev.diego.superpedidos.services.exceptions.DatabaseNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,10 @@ public class CategoriaService {
     public CategoriaDtoWithProdutos buscar(Integer id) {
         Categoria categoria = repository.buscarCategoriaComProdutos(id).orElseThrow(() -> new DatabaseNotFoundException("Categoria não encontrada id: " + id + " Objeto " + Categoria.class.getName()));
         return new CategoriaDtoWithProdutos(categoria);
+    }
+    @Transactional(readOnly = true)
+    public Page<CategoriaDto> findAllPaged(Pageable pageable) {
+        return repository.findAll(pageable).map(CategoriaDto::new);
     }
 
     @Transactional

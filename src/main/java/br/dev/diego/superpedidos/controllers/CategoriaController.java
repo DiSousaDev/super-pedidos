@@ -6,6 +6,8 @@ import br.dev.diego.superpedidos.entities.dto.CategoriaInsertDto;
 import br.dev.diego.superpedidos.entities.dto.CategoriaUpdateDto;
 import br.dev.diego.superpedidos.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,4 +52,9 @@ public class CategoriaController {
         categoriaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping
+    public ResponseEntity<Page<CategoriaDto>> findAllPaged(Pageable pageable) {
+        return ResponseEntity.ok(categoriaService.findAllPaged(pageable));
+    }
+
 }
