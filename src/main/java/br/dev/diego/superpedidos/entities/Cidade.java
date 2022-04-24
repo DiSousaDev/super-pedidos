@@ -1,7 +1,6 @@
 package br.dev.diego.superpedidos.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -12,7 +11,7 @@ public class Cidade  extends AbstractEntity<Integer>{
 
     private String nome;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "estado_id")
     private Estado estado;
 

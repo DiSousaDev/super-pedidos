@@ -1,5 +1,8 @@
 package br.dev.diego.superpedidos.entities;
 
+import br.dev.diego.superpedidos.entities.dto.ProdutoDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,6 +13,7 @@ import java.util.Objects;
 @Table(name = "tb_item_pedido")
 public class ItemPedido implements Serializable {
 
+    @JsonIgnore
     @EmbeddedId
     private ItemPedidoPK id = new ItemPedidoPK();
 
@@ -28,12 +32,13 @@ public class ItemPedido implements Serializable {
         this.preco = preco;
     }
 
+    @JsonIgnore
     public Pedido getPedido() {
         return id.getPedido();
     }
 
-    public Produto getProduto() {
-        return id.getProduto();
+    public ProdutoDto getProduto() {
+        return new ProdutoDto(id.getProduto());
     }
 
     public ItemPedidoPK getId() {

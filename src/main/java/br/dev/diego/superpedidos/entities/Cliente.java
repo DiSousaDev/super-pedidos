@@ -5,6 +5,7 @@ import br.dev.diego.superpedidos.entities.enums.TipoCliente;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Cliente extends AbstractEntity<Integer>{
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "tb_telefone")
     private Set<String> telefones = new HashSet<>();
 

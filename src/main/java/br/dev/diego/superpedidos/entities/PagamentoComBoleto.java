@@ -1,6 +1,7 @@
 package br.dev.diego.superpedidos.entities;
 
 import br.dev.diego.superpedidos.entities.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,7 +11,10 @@ import java.util.Date;
 @Table(name = "tb_pagamento_com_boleto")
 public class PagamentoComBoleto extends Pagamento {
 
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "America/Sao_Paulo")
     private Date dataVencimento;
+
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "America/Sao_Paulo")
     private Date dataPagamento;
 
     public PagamentoComBoleto() {

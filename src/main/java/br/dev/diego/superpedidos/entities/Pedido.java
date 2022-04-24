@@ -49,12 +49,28 @@ public class Pedido extends AbstractEntity<Integer>{
         this.instante = instante;
     }
 
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public Endereco getEnderecoDeEntrega() {
         return enderecoDeEntrega;
     }
 
-    public void setEnderecoDeEntrega(Endereco enderecoDoPedido) {
-        this.enderecoDeEntrega = enderecoDoPedido;
+    public void setEnderecoDeEntrega(Endereco enderecoDeEntrega) {
+        this.enderecoDeEntrega = enderecoDeEntrega;
     }
 
     public Set<ItemPedido> getItens() {

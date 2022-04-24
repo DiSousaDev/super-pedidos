@@ -7,17 +7,21 @@ public class CidadeDto {
     private Integer id;
     private String nome;
 
+    private EstadoDto estado;
+
     public CidadeDto() {
     }
 
-    public CidadeDto(Integer id, String nome) {
+    public CidadeDto(Integer id, String nome, EstadoDto estado) {
         this.id = id;
         this.nome = nome;
+        this.estado = estado;
     }
 
     public CidadeDto(Cidade entity) {
         id = entity.getId();
         nome = entity.getNome();
+        estado = new EstadoDto(entity.getEstado());
     }
 
     public Integer getId() {
@@ -36,4 +40,7 @@ public class CidadeDto {
         this.nome = nome;
     }
 
+    public EstadoDto getEstado() {
+        return estado;
+    }
 }

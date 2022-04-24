@@ -1,6 +1,7 @@
 package br.dev.diego.superpedidos.entities.dto;
 
 import br.dev.diego.superpedidos.entities.Cliente;
+import br.dev.diego.superpedidos.entities.enums.TipoCliente;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -55,8 +56,8 @@ public class ClienteDtoWithTelefoneAndEndereco {
         return cpfOuCnpj;
     }
 
-    public Integer getTipo() {
-        return tipo;
+    public TipoCliente getTipo() {
+        return TipoCliente.toEnum(tipo);
     }
 
     public List<EnderecoDto> getEnderecos() {
