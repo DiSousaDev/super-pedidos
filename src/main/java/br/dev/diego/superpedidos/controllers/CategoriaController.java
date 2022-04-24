@@ -7,6 +7,7 @@ import br.dev.diego.superpedidos.entities.dto.CategoriaUpdateDto;
 import br.dev.diego.superpedidos.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,5 +43,11 @@ public class CategoriaController {
     public ResponseEntity<CategoriaDto> update(@PathVariable Integer id, @RequestBody CategoriaUpdateDto categoriaUpdateDto) {
         CategoriaDto categoriaDto = categoriaService.update(id, categoriaUpdateDto);
         return ResponseEntity.ok().body(categoriaDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Integer id){
+        categoriaService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
