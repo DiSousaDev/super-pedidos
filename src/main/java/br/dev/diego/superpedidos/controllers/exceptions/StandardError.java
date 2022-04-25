@@ -4,16 +4,34 @@ import java.time.Instant;
 
 public class StandardError {
 
-    private Integer status;
-    private String msg;
+    private String title;
     private Instant timeStamp;
+    private Integer status;
+    private String developerMessage;
 
     public StandardError() {
     }
 
-    public StandardError(Integer status, String msg, Instant timeStamp) {
+    public StandardError(String title, Instant timeStamp, Integer status, String developerMessage) {
+        this.title = title;
+        this.timeStamp = timeStamp;
         this.status = status;
-        this.msg = msg;
+        this.developerMessage = developerMessage;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Instant getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Instant timeStamp) {
         this.timeStamp = timeStamp;
     }
 
@@ -25,19 +43,11 @@ public class StandardError {
         this.status = status;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getDeveloperMessage() {
+        return developerMessage;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Instant getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(Instant timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setDeveloperMessage(String developerMessage) {
+        this.developerMessage = developerMessage;
     }
 }
