@@ -27,10 +27,6 @@ public class CategoriaService {
         Categoria categoria = repository.buscarCategoriaComProdutos(id).orElseThrow(() -> new DatabaseNotFoundException("Categoria não encontrada id: " + id + " Objeto " + Categoria.class.getName()));
         return new CategoriaDtoWithProdutos(categoria);
     }
-    @Transactional(readOnly = true)
-    public Page<CategoriaDto> findAllPaged(Pageable pageable) {
-        return repository.findAll(pageable).map(CategoriaDto::new);
-    }
 
     @Transactional
     public CategoriaDto save(CategoriaInsertDto categoriaInsertDto) {
@@ -53,6 +49,11 @@ public class CategoriaService {
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Erro ao excluir id: " + id);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public Page<CategoriaDto> findAllPaged(Pageable pageable) {
+        return repository.findAll(pageable).map(CategoriaDto::new);
     }
 
     private Categoria categoriaDtoToCategoria(CategoriaDto categoriaDto) {
