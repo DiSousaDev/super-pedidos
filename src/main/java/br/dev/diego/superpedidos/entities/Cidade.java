@@ -18,6 +18,10 @@ public class Cidade  extends AbstractEntity<Integer>{
     public Cidade() {
     }
 
+    public Cidade(Integer id) {
+        super(id);
+    }
+
     public Cidade(Integer id, String nome, Estado estado) {
         super(id);
         this.nome = nome;

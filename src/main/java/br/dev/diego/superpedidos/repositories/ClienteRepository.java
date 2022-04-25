@@ -11,8 +11,8 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
     @Query("SELECT obj " +
             "FROM Cliente obj " +
-            "JOIN FETCH obj.telefones " +
-            "JOIN FETCH obj.enderecos " +
+            "LEFT JOIN obj.telefones " +
+            "LEFT JOIN obj.enderecos " +
             "WHERE obj.id = :id")
     Optional<Cliente> buscarClienteComTelefoneEEndereco(Integer id);
 
