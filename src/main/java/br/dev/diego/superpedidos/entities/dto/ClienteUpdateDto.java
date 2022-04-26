@@ -1,11 +1,13 @@
 package br.dev.diego.superpedidos.entities.dto;
 
 import br.dev.diego.superpedidos.entities.Cliente;
+import br.dev.diego.superpedidos.services.validation.ClienteUpdate;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@ClienteUpdate
 public class ClienteUpdateDto {
 
     private Integer id;
