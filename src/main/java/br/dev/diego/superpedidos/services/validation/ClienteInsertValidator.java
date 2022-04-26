@@ -26,11 +26,11 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 
         List<CustomFieldError> list = new ArrayList<>();
 
-        if (objDto.getTipo().equals(TipoCliente.PESSOA_FISICA.getCod()) && !BR.isValidCPF(objDto.getCpfOuCnpj())) {
+        if (objDto.getTipo().equals(TipoCliente.PESSOA_FISICA.getCod()) && !BR.isValidCpf(objDto.getCpfOuCnpj())) {
             list.add(new CustomFieldError("cpfOuCnpj", "CPF inválido"));
         }
 
-        if (objDto.getTipo().equals(TipoCliente.PESSOA_JURIDICA.getCod()) && !BR.isValidCNPJ(objDto.getCpfOuCnpj())) {
+        if (objDto.getTipo().equals(TipoCliente.PESSOA_JURIDICA.getCod()) && !BR.isValidCnpj(objDto.getCpfOuCnpj())) {
             list.add(new CustomFieldError("cpfOuCnpj", "CNPJ inválido"));
         }
 
