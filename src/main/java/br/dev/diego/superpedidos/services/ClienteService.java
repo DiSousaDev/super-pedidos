@@ -19,8 +19,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
-
 @Service
 public class ClienteService {
 
@@ -33,7 +31,7 @@ public class ClienteService {
     @Transactional(readOnly = true)
     public ClienteDtoWithTelefoneAndEndereco buscar(Integer id) {
         return new ClienteDtoWithTelefoneAndEndereco(repository.buscarClienteComTelefoneEEndereco(id)
-                .orElseThrow(() -> new EntityNotFoundException("Nenhum Cliente não encontrado id: " + id)));
+                .orElseThrow(() -> new DatabaseNotFoundException("Cliente não encontrado id: " + id + " Objeto " + Cliente.class.getName())));
     }
 
     @Transactional
@@ -57,7 +55,7 @@ public class ClienteService {
             Cliente cliente = findById(id);
             repository.delete(cliente);
         } catch (DataIntegrityViolationException e) {
-            throw new DataIntegrityException("Erro ao excluir id: " + id);
+            throw new DataIntegrityException("Erro ao excluir cliente com pedido(s) associados id: " + id);
         }
     }
 
