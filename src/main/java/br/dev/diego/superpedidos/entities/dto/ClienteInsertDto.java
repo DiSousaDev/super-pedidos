@@ -1,9 +1,12 @@
 package br.dev.diego.superpedidos.entities.dto;
 
+import br.dev.diego.superpedidos.services.validation.ClienteInsert;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@ClienteInsert
 public class ClienteInsertDto {
 
     @NotEmpty(message = "Preenchimento obrigatório.")
@@ -14,16 +17,27 @@ public class ClienteInsertDto {
     @Email(message = "E-mail inválido.")
     private String email;
 
+    @NotEmpty(message = "Preenchimento obrigatório.")
     private String cpfOuCnpj;
+
     private Integer tipo;
 
+    @NotEmpty(message = "Preenchimento obrigatório.")
     private String logradouro;
+
+    @NotEmpty(message = "Preenchimento obrigatório.")
     private String numero;
+
     private String complemento;
+
     private String bairro;
+
+    @NotEmpty(message = "Preenchimento obrigatório.")
     private String cep;
+
     private Integer cidadeId;
 
+    @NotEmpty(message = "Preenchimento obrigatório.")
     private String telefone1;
     private String telefone2;
     private String telefone3;
