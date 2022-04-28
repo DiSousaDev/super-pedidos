@@ -19,6 +19,7 @@ public class PedidoDto {
     private ClienteDtoWithTelefoneAndEndereco cliente;
     private EnderecoDto enderecoDeEntrega;
     private Set<ItemPedido> itens = new HashSet<>();
+    private double totalPedido;
 
     public PedidoDto() {
     }
@@ -74,5 +75,12 @@ public class PedidoDto {
 
     public Set<ItemPedido> getItens() {
         return itens;
+    }
+
+    public double getTotalPedido() {
+        for (ItemPedido i : itens) {
+            totalPedido += i.getSubTotal();
+        }
+        return totalPedido;
     }
 }
