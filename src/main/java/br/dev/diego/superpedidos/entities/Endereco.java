@@ -1,5 +1,7 @@
 package br.dev.diego.superpedidos.entities;
 
+import br.dev.diego.superpedidos.entities.dto.EnderecoDto;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -36,6 +38,17 @@ public class Endereco extends AbstractEntity<Integer>{
         this.cep = cep;
         this.cidade = cidade;
         this.cliente = cliente;
+    }
+
+    public Endereco(EnderecoDto enderecoDto) {
+        super(enderecoDto.getId());
+        logradouro = getLogradouro();
+        numero = getNumero();
+        complemento = getComplemento();
+        bairro = getBairro();
+        cep = getCep();
+        cidade = getCidade();
+        cliente = getCliente();
     }
 
     public String getLogradouro() {

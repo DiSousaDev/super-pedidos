@@ -1,5 +1,7 @@
 package br.dev.diego.superpedidos.entities;
 
+import br.dev.diego.superpedidos.entities.dto.PedidoInsertDto;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -31,6 +33,8 @@ public class Pedido extends AbstractEntity<Integer>{
     @OneToMany(mappedBy = "id.pedido")
     private Set<ItemPedido> itens = new HashSet<>();
 
+    private double totalPedido;
+
     public Pedido() {
     }
 
@@ -39,6 +43,14 @@ public class Pedido extends AbstractEntity<Integer>{
         this.instante = instante;
         this.cliente = cliente;
         this.enderecoDeEntrega = enderecoDeEntrega;
+    }
+
+    public Pedido(PedidoInsertDto entity) {
+        super(entity.getId());
+        instante = entity.getInstante();
+        pagamento = entity.getPagamento();
+        cliente = new Cliente(entity.getCliente());
+        enderecoDeEntrega = new Endereco(entity.getEnderecoDeEntrega());
     }
 
     public Instant getInstante() {
@@ -75,5 +87,12 @@ public class Pedido extends AbstractEntity<Integer>{
 
     public Set<ItemPedido> getItens() {
         return itens;
+    }
+
+    public double getTotalPedido() {
+        for (ItemPedido i : itens) {
+            totalPedido += i.getSubTotal();
+        }
+        return totalPedido;
     }
 }

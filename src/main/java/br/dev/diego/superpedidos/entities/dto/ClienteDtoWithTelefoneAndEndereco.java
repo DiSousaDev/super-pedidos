@@ -35,7 +35,7 @@ public class ClienteDtoWithTelefoneAndEndereco {
         nome = entity.getNome();
         email = entity.getEmail();
         cpfOuCnpj = entity.getCpfOuCnpj();
-        tipo = entity.getTipoCliente().getCod();
+        tipo = entity.getTipoCliente() == null ? null : entity.getTipoCliente().getCod();
         enderecos = entity.getEnderecos().stream().map(EnderecoDto::new).collect(Collectors.toList());
         telefones = entity.getTelefones();
     }

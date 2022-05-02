@@ -2,6 +2,7 @@ package br.dev.diego.superpedidos.entities;
 
 import br.dev.diego.superpedidos.entities.enums.EstadoPagamento;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tb_pagamento")
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public abstract class Pagamento implements Serializable {
 
     @Id

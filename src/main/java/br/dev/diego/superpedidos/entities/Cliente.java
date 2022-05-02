@@ -1,5 +1,6 @@
 package br.dev.diego.superpedidos.entities;
 
+import br.dev.diego.superpedidos.entities.dto.ClienteDto;
 import br.dev.diego.superpedidos.entities.enums.TipoCliente;
 
 import javax.persistence.CascadeType;
@@ -42,6 +43,14 @@ public class Cliente extends AbstractEntity<Integer>{
         this.email = email;
         this.cpfOuCnpj = cpfOuCnpj;
         this.tipo = tipoCliente.getCod();
+    }
+
+    public Cliente(ClienteDto entity) {
+        super(entity.getId());
+        nome = entity.getNome();
+        email = entity.getEmail();
+        cpfOuCnpj = entity.getCpfOuCnpj();
+        tipo = (entity.getTipo() == null) ? null : entity.getTipo().getCod();
     }
 
     public String getNome() {

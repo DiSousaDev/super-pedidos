@@ -9,7 +9,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PedidoDto {
+public class PedidoResponseDto {
 
     private Integer id;
 
@@ -21,16 +21,17 @@ public class PedidoDto {
     private Set<ItemPedido> itens = new HashSet<>();
     private double totalPedido;
 
-    public PedidoDto() {
+    public PedidoResponseDto() {
     }
 
-    public PedidoDto(Pedido entity) {
+    public PedidoResponseDto(Pedido entity) {
         id = entity.getId();
         instante = entity.getInstante();
         pagamento = entity.getPagamento();
         cliente = new ClienteDtoWithTelefoneAndEndereco(entity.getCliente());
         enderecoDeEntrega = new EnderecoDto(entity.getEnderecoDeEntrega());
         itens = entity.getItens();
+        totalPedido = entity.getTotalPedido();
     }
 
     public Integer getId() {
@@ -78,9 +79,6 @@ public class PedidoDto {
     }
 
     public double getTotalPedido() {
-        for (ItemPedido i : itens) {
-            totalPedido += i.getSubTotal();
-        }
         return totalPedido;
     }
 }
