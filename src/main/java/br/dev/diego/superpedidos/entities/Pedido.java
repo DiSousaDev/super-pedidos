@@ -33,8 +33,6 @@ public class Pedido extends AbstractEntity<Integer>{
     @OneToMany(mappedBy = "id.pedido")
     private Set<ItemPedido> itens = new HashSet<>();
 
-    private double totalPedido;
-
     public Pedido() {
     }
 
@@ -90,9 +88,11 @@ public class Pedido extends AbstractEntity<Integer>{
     }
 
     public double getTotalPedido() {
+        double totalPedido = 0.0;
         for (ItemPedido i : itens) {
             totalPedido += i.getSubTotal();
         }
         return totalPedido;
     }
+
 }
